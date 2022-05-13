@@ -16,7 +16,15 @@ spring:
   devtools:
     restart:
       enabled: true
-
+# 自定义负载均衡策略
 product-service:
-  loadbalancer:
+  ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+#修改调用超时时间
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 200
+        read-timeout: 200
